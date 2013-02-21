@@ -4,33 +4,37 @@
 //The sum of these multiples is 23.
 //Find the sum of all the multiples of 3 or 5 below 1000.
 
-import java.util.*; 
+import java.util.*;
 
 public class EulerProblem1 {
     public static void main( String[] args ){
-        boolean withTest = true;
+        boolean withTest = false;
         ArrayList<Integer> allMultiples = multiplesOf5and3WithSumLimitOf1000();
         System.out.println("multiples of 3 or 5 which sum is maximum 1000: " + allMultiples.toString() );
+        System.out.println("The Sum is: " + sumDigits(allMultiples) );
 
         if ( withTest ) {
             testFunctions();
         }
     }
 
+    public static Integer sumDigits (ArrayList<Integer> array){
+        int sum = 0;
+        for (int index = (array.size() -1 ); index >= 0 ; index-- ){
+            sum = sum + array.get(index);
+        }
+        return sum;
+    }
+
     public static ArrayList<Integer> multiplesOf5and3WithSumLimitOf1000 (){
         int sum = 0;
         ArrayList<Integer> multiples = new ArrayList<Integer>();
-        int index = 0;
         int limit = 1000;
 
-        while ( sum < limit ) {
-            index++;
+        for ( int index = limit; index > 0; index-- ) {
             if ( isThisNumberMultipleOf5(index) || isThisNumberMultipleOf3(index) ){
-                sum = sum + index;
-                if ( sum > 1000 ) {
-                    break;
-                }
-                else {
+                if (index != 1000) {
+                    sum = sum + index;
                     multiples.add( index );
                 }
             }
