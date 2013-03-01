@@ -1,0 +1,12 @@
+# -----
+# This work is licensed under the Creative Commons Attribution 3.0 Unported License. To view a copy  # of this license, visit http://creativecommons.org/licenses/by/3.0/.
+# -----
+
+- deploy:
+    deploy-path:        /path/to/project/deploy/containerfolder/
+    deploy-folder-name: deployFolderName
+
+- release:
+    main-project-path:      /path/to/project/containerfolder/
+    project-folder-name:    site
+    version-file:           ../version.txt
