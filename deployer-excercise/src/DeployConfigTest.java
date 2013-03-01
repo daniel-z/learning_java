@@ -1,8 +1,18 @@
+// -----
+// This work is licensed under the Creative Commons Attribution 3.0 Unported License. To view a copy // of this license, visit http://creativecommons.org/licenses/by/3.0/.
+// -----
+
 import java.io.IOException;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.HashMap;
 import org.yaml.snakeyaml.Yaml;
+
+/**
+ * @author      Daniel Zamorano <daniel.zamorano.m@gmail.com>
+ * @version     0.1
+ * @since       2013-03-01
+ */
 
 public class DeployConfigTest {
     public static void main(String [ ] args) throws IOException {
