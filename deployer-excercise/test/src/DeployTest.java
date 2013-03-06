@@ -15,7 +15,7 @@ import org.yaml.snakeyaml.Yaml;
  */
 
 public class DeployTest {
-    public static void main(String [ ] args) throws IOException {
+    public static void main(String [ ] args) throws Exception {
         String pathToConfigFile = "test/resources/test-config.yaml";
 
         DeployConfig deployConfig = new DeployConfig(pathToConfigFile);

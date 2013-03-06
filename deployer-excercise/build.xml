@@ -4,8 +4,11 @@
     </description>
   <!-- set global properties for this build -->
   <property name="src" location="src"/>
-  <property name="build" location="build"/>
-  <property name="dist"  location="dist"/>
+  <property name="srcTest" location="src"/>
+  <property name="build"    location="build"/>
+  <property name="dist" location="dist"/>
+  <property name="testPath" 
+      location="/Users/dz/my-workspace/learning_java/deployer-excercise/test/src"/>  
   <property name="classpath"  location="/Users/dz/Library/Java/libraries"/>
 
   <target name="init">
@@ -23,13 +26,23 @@
     </javac>
   </target>
 
-  <target name="testAll" description="run all tests." depends="compile">
+  <target name="compileTest" depends="init"
+        description="compile the source.">
+    <javac srcdir="${srcTest}" destdir="${build}" target="1.7" includeantruntime="false">
+        <classpath>
+            <pathelement path="build/"/>
+            <pathelement location="/Users/dz/Library/Java/libraries/snakeyaml-1.11.jar"/>
+        </classpath>
+    </javac>
+  </target>
+
+  <target name="testAll" description="run all tests." depends="compileTest">
       <antcall target="testConfig" />
       <antcall target="testDeploy" />
   </target>
 
 
-  <target name="testConfig" description="run tests." depends="compile">
+  <target name="testConfig" description="run tests." depends="compileTest">
       <java classname="DeployConfigTest">
           <classpath>
               <pathelement path="build/"/>
@@ -38,7 +51,7 @@
       </java>
   </target>
 
-  <target name="testDeploy" description="run tests." depends="compile">
+  <target name="testDeploy" description="run tests." depends="compileTest">
       <java classname="DeployTest">
         <classpath>
             <pathelement path="build/"/>
