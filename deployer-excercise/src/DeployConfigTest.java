@@ -16,7 +16,7 @@ import org.yaml.snakeyaml.Yaml;
 
 public class DeployConfigTest {
     public static void main(String [ ] args) throws IOException {
-        String pathToConfigFile = "src/config.yaml";
+        String pathToConfigFile = "test/resources/test-config.yaml";
 
         DeployConfig deployConfig = new DeployConfig(pathToConfigFile);
 
@@ -35,11 +35,12 @@ public class DeployConfigTest {
         System.out.println("Testing getAllConfig");
         System.out.println("--------------------");
         HashMap<String, String> expectedResult = new HashMap<String, String>(){{
-            put("deploy-path","/Users/dz/Dropbox/public/");
-            put("deploy-path","/Users/dz/Dropbox/public/");
-            put("deploy-folder-name","site");
-            put("release-main-folder","../site");
-            put("version-file","../version.txt");
+            put("project-name","deploytest");
+            put("deploy-path","test/resources/deploy");
+            put("path-to-project","test/resources/");
+            put("main-folder","site");
+            put("release-main-folder","test/resources/release");
+            put("version","1.0");
         }};
 
         HashMap<String, String> result = deployConfig.getAllConfig();

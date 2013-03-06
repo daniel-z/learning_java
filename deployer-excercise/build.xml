@@ -15,20 +15,19 @@
 
   <target name="compile" depends="init"
         description="compile the source.">
-    <javac srcdir="${src}" destdir="${build}"   
-        classpath="/Users/dz/Library/Java/libraries/snakeyaml-1.11.jar">
+    <javac srcdir="${src}" destdir="${build}" target="1.7" includeantruntime="false">
+        <classpath>
+            <pathelement path="build/"/>
+            <pathelement location="/Users/dz/Library/Java/libraries/snakeyaml-1.11.jar"/>
+        </classpath>
     </javac>
   </target>
 
-  <target name="dist" depends="compile" description="generate the distribution" >
-    <mkdir dir="${dist}/lib"/>
-    <jar jarfile="${dist}/lib/deployer-${DSTAMP}.jar" basedir="${build}"/>
+  <target name="testAll" description="run all tests." depends="compile">
+      <antcall target="testConfig" />
+      <antcall target="testDeploy" />
   </target>
 
-  <target name="clean" description="clean up" >
-    <delete dir="${build}"/>
-    <delete dir="${dist}"/>
-  </target>
 
   <target name="testConfig" description="run tests." depends="compile">
       <java classname="DeployConfigTest">
@@ -41,21 +40,16 @@
 
   <target name="testDeploy" description="run tests." depends="compile">
       <java classname="DeployTest">
-          <classpath>
-              <pathelement path="build/"/>
-              <pathelement location="/Users/dz/Library/Java/libraries/snakeyaml-1.11.jar"/>
-          </classpath>
+        <classpath>
+            <pathelement path="build/"/>
+            <pathelement location="/Users/dz/Library/Java/libraries/snakeyaml-1.11.jar"/>
+        </classpath>
       </java>
   </target>
 
-  <target name="test" description="run tests." depends="compile">
-      <java classname="DeployConfigTest">
-          <classpath>
-              <pathelement path="build/"/>
-              <pathelement location="/Users/dz/Library/Java/libraries/snakeyaml-1.11.jar"/>
-          </classpath>
-      </java>
+  <target name="clean" description="clean up" >
+    <delete dir="${build}"/>
+    <delete dir="${dist}"/>
   </target>
-
 
 </project>

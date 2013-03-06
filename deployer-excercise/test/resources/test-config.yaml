@@ -8,8 +8,9 @@
 # @since       2013-03-01
 # -----
 
-
-deploy-path:            /Users/dz/Dropbox/public/
-deploy-folder-name:     site
-release-main-folder:    ../site
-version-file:           ../version.txt
+project-name:           "deploytest"
+deploy-path:            "test/resources/deploy"
+path-to-project:        "test/resources/"
+main-folder:            "site"
+release-main-folder:    "test/resources/release"
+version:                "1.0"
