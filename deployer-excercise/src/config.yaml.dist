@@ -8,7 +8,9 @@
 # @since       2013-03-01
 # -----
 
-deploy-path:            /sample/path/toFile/
-deploy-folder-name:     sampleFolderNAme
-release-main-folder:    ../sampleFolderName
-version-file:           ../sampleFolderName/version.txt
+project-name:           "deployer-project"
+deploy-path:            "path/deploy/folder"
+path-to-project:        "path/to/project/folder"
+main-folder:            "folder/to/tar/gz"
+release-main-folder:    "not/Implemented/Yet"
+version:                "1.0"
