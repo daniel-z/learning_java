@@ -28,7 +28,7 @@
 
   <target name="compileTest" depends="init"
         description="compile the source.">
-    <javac srcdir="${srcTest}" destdir="${build}" target="1.7" includeantruntime="false">
+    <javac srcdir="${testPath}" destdir="${build}" target="1.7" includeantruntime="false">
         <classpath>
             <pathelement path="build/"/>
             <pathelement location="/Users/dz/Library/Java/libraries/snakeyaml-1.11.jar"/>
@@ -51,9 +51,10 @@
       </java>
   </target>
 
-  <target name="testDeploy" description="run tests." depends="compileTest">
+  <target name="testDeploy" description="run deploy tests." depends="compileTest">
       <java classname="DeployTest">
         <classpath>
+            <pathelement path="${testPath}"/>
             <pathelement path="build/"/>
             <pathelement location="/Users/dz/Library/Java/libraries/snakeyaml-1.11.jar"/>
         </classpath>
